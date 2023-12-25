@@ -54,16 +54,16 @@ import { mapActions } from 'vuex';
 export default {
 
     data() {
-    return {
-        form: {
-            name: "Abc Project",
-            image_name: "project Doc",
-            image: null,
-            description: "Description"
-        },
-        show: true,
-        file:null
-    }
+        return {
+            form: {
+                name: "Abc Project",
+                image_name: "project Doc",
+                image: null,
+                description: "Description"
+            },
+            show: true,
+            file:null
+        }
     },
     methods: {
         ...mapActions("proposal", ["create"]),
@@ -75,9 +75,9 @@ export default {
             let res = await this.$store.dispatch('proposal/create', this.form)
             if(res.status ==200){
                 console.log(res)
-                // this.$router.push({
-                //     path: '/home',
-                // })
+                this.$router.push({
+                     path: '/home',
+                })
             }
         },
 

@@ -29,7 +29,18 @@
         <b-button type="submit" variant="primary">Login</b-button>
     </b-form> -->
     <RouterLink to="/proposal-create">Create</RouterLink>
-    <b-table :items="proposals"></b-table>
+    <table table border="1">
+      <tr>
+        <th>Project Name</th>
+        <th>Project file</th>
+        <th>Description</th>
+      </tr>
+      <tr v-for="item in proposals" :key="item">
+        <td>{{ item.name }}</td>
+        <td><a :href="`http://localhost:8001/api/v1/proposal/file/${item.image}`" target="_blank">{{ item.image_name }}</a></td>
+        <td>{{ item.description }}</td>
+      </tr>
+    </table>
   </div>
 </template>
 <script>
