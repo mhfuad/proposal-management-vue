@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1>This is an home page</h1>
-    <b-form @submit="onSubmit" @reset="onReset">
+    <!-- <b-form @submit="onSubmit" @reset="onReset">
         <b-form-group
           id="input-group-1"
           label="User id:"
@@ -27,20 +27,37 @@
         </b-form-group>
 
         <b-button type="submit" variant="primary">Login</b-button>
-    </b-form>
+    </b-form> -->
+    <RouterLink to="/proposal-create">Create</RouterLink>
+    <b-table :items="proposals"></b-table>
   </div>
 </template>
 <script>
+  import { mapActions, mapGetters } from 'vuex';
   export default {
-    onSubmit(event){
+    data(){
+      return{
 
-    },
-    onReset(event) {
-        event.preventDefault()
-          this.form.email = ''
-          this.form.password = ''
-          this.$nextTick(() => {
-        })
       }
+    },
+    methods:{
+      ...mapActions('proposal', ["all"]),
+      onSubmit(event){
+
+      },
+      onReset(event) {
+          event.preventDefault()
+            this.form.email = ''
+            this.form.password = ''
+            this.$nextTick(() => {
+          })  
+      },
+    },
+    mounted(){
+      this.$store.dispatch("proposal/all")
+    },
+    computed:{
+      ...mapGetters({proposals: "proposal/proposals"})
+    }
   }
 </script>

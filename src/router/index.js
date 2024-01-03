@@ -106,6 +106,24 @@ const router = createRouter({
         }
         next()
       }
+    },
+    {
+      path: '/proposal-create',
+      name: 'proposal-create',
+      component: DashboardLayout,
+      children: [{
+        path: '',
+        name: 'create',
+        component: () => import('../views/proposal/Create.vue')
+      }],
+      beforeEnter: (to, from, next) => {
+        if(!store.getters['auth/authenticated']){
+          return next({
+            name: 'login'
+          })
+        }
+        next()
+      }
     }
 
   ]

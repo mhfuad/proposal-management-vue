@@ -8,7 +8,6 @@
             <nav>
                 <RouterLink to="/home">Home</RouterLink> | 
                 <RouterLink to="/about">About</RouterLink> | 
-                <RouterLink to="/student">Student</RouterLink> | 
                 {{ user.firstName +" "+user.lastName }} |
                 <a href="" @click.prevent="signOut">Sign out</a>
             </nav>
