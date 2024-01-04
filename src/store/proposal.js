@@ -22,7 +22,7 @@ export default {
         },
 
         async create({ dispatch, commit}, data){
-            let res = await axios.post("v1/proposal/create", data);
+            let res = await axios.post("v1/proposal", data);
             return res;
         },
     }

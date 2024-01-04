@@ -74,9 +74,10 @@ export default {
 
             let res = await this.$store.dispatch('proposal/create', this.form)
             if(res.status ==200){
-                this.$router.push({
-                    path: '/home',
-                })
+                console.log(res)
+                // this.$router.push({
+                //     path: '/home',
+                // })
             }
         },
 
@@ -93,8 +94,8 @@ export default {
             if(file.size > 775) {
                 let reader = new FileReader();
                 reader.onload = () => {
-                    console.log('RESULT', reader.result)
-                    this.form.pdfFile = reader.result;
+                    //console.log('RESULT', reader.result)
+                    this.form.image = reader.result;
                 }
                 reader.readAsDataURL(file);
             }
