@@ -29,7 +29,7 @@
         <b-button type="submit" variant="primary">Login</b-button>
     </b-form> -->
     <RouterLink to="/proposal-create">Create</RouterLink>
-    <table table border="1">
+    <table table>
       <tr>
         <th>Project Name</th>
         <th>Project file</th>
@@ -72,3 +72,9 @@
     }
   }
 </script>
+<style scoped>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
