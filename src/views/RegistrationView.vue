@@ -11,7 +11,7 @@
                 <b-form-input
                 id="input-1"
                 v-model="form.firstName"
-                type="email"
+                type="text"
                 placeholder="First Name"
                 required
                 ></b-form-input>
@@ -24,8 +24,8 @@
             >
                 <b-form-input
                 id="input-1"
-                v-model="form.email"
-                type="email"
+                v-model="form.lastName"
+                type="text"
                 placeholder="Last Name"
                 required
                 ></b-form-input>
@@ -33,12 +33,12 @@
 
           <b-form-group
             id="input-group-1"
-            label="User id:"
+            label="Email:"
             label-for="input-1"
           >
             <b-form-input
               id="input-1"
-              v-model="form.username"
+              v-model="form.email"
               type="email"
               placeholder="Enter email"
               required
@@ -54,8 +54,20 @@
               required
             ></b-form-input>
           </b-form-group>
-  
-          <b-button type="submit" variant="primary">Login</b-button>
+
+          <b-form-group id="input-group-2" label="Mobile:" label-for="input-2">
+            <b-form-input
+              id="input-2"
+              type="text"
+              v-model="form.phone"
+              placeholder="Phone"
+              required
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group id="input-group-2" label="Role:" label-for="input-2">
+            <b-form-select v-model="form.type" :options="role"></b-form-select>
+          </b-form-group>
+          <b-button type="submit" variant="primary">Register</b-button>
           <b-button type="reset" variant="danger">Reset</b-button>
           <p>Already have Account? </p><RouterLink to="/">Login</RouterLink>
         </b-form>
@@ -75,13 +87,21 @@
             email: 'fuad@gmail.com',
             phone: '01675944076',
             type: 'ADMIN',
-            password: '123123'
+            password: '123123',
           },
+          role:[
+            { value: null, text: 'Please select an option', disabled: true },
+            { value: 'ADMIN', text: 'Admin User' },
+            { value: 'USER', text: 'User Role' },
+            { value: "CUSTOMER", text: 'Customer User' },
+            { value: 'TEACHER', text: 'Teacher User'},
+            { value: 'STUDENT', text: 'Student User'}
+          ],
           show: true
         }
       },
       methods: {
-        ...mapActions('auth', ['signIn']),
+        ...mapActions('user', ['create']),
         onSubmit(event) {
           event.preventDefault()
           this.$store.dispatch('auth/signIn', this.form);
